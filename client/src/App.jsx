@@ -6,9 +6,11 @@ import AdminDashboard from "./pages/AdminDashboard";
 import Users from "./pages/users";
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Details from './pages/Details'
+import Dashboard from './pages/Dashboard'
 import { useState } from "react"
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const handleSignupSuccess = () => {
     setIsAuthenticated(true);
   };
