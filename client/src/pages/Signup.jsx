@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { auth } from '../firebase';
 import { PhoneAuthProvider,createUserWithEmailAndPassword,linkWithCredential, sendEmailVerification, RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
-const Signup = () => {
+const Signup = ({onSignUpSuccess}) => {
+    const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [phone, setPhone] = useState('');
@@ -12,6 +15,15 @@ const Signup = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [codeSent, setCodeSent] = useState(false);
   const [emailVerified, setEmailVerified] = useState(false);
+
+
+  const confirmSignup = () => {
+    // Assume signup logic is implemented here
+
+    // On successful signup:
+    onSignUpSuccess();
+    navigate('/details'); // Navigate to details page after signup
+  };
 
   // Initialize the reCAPTCHA
   const setupRecaptcha = () => {
@@ -57,6 +69,7 @@ const Signup = () => {
       const credential = await PhoneAuthProvider.credential(verificationId, verificationCode);
       await linkWithCredential(auth.currentUser,credential);
       setSuccessMessage('Phone number verified successfully!');
+      confirmSignup();
     } catch (err) {
       setError(err.message);
       console.log(err);
@@ -150,6 +163,9 @@ const Signup = () => {
           Verify Phone
         </button>
       )}
+      <p>
+        Already have an account? <button onClick={() => window.location.href = '/login'}>Login</button>
+      </p>
       <div id="recaptcha-container"></div>
     </div>
   );

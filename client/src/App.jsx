@@ -1,19 +1,30 @@
 // src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-
+import Details from './pages/Details';
+import Dashboard from './pages/Dashboard';
+import { useNavigate } from 'react-router-dom';
 const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const handleSignupSuccess = () => {
+    setIsAuthenticated(true);
+  };
+
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true);
+  };
+
   return (
     <Router>
-      <nav style={styles.nav}>
-        <Link to="/login" style={styles.navLink}>Login</Link>
-        <Link to="/signup" style={styles.navLink}>Sign Up</Link>
-      </nav>
+
       <Routes>
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Navigate to="/signup" />} />
+        <Route path="/signup" element={<Signup onSignUpSuccess={handleSignupSuccess} />} />
+        <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess} />} />
+        <Route path="/details" element={<Details onNavigateToDashboard={handleLoginSuccess} />} />
+        <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
       </Routes>
     </Router>
   );

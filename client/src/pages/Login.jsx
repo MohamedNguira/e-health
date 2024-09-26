@@ -2,31 +2,22 @@
 import React, { useState } from 'react';
 import { auth } from '../firebase';
 import { signInWithEmailAndPassword, signInWithPhoneNumber,RecaptchaVerifier } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({onLoginSuccess}) => {
   const [identifier, setIdentifier] = useState(''); // Use a single state for email or phone number
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [verificationId, setVerificationId] = useState(null); // For phone number verification
   const [code, setCode] = useState(''); // For verification code input
-  const setupRecaptcha = () => {
-    try {
-      window.recaptchaVerifier = new RecaptchaVerifier(auth,
-        'recaptcha-container',
-        {
-          size: 'invisible',
-          callback: (response) => {
-            console.log('reCAPTCHA passed');
-          },
-          'expired-callback': () => {
-            console.log('reCAPTCHA expired, reset it');
-          },
-        },  
-        
-      );
-    } catch (err) {
-      console.error('Error initializing reCAPTCHA:', err);
-    }
+  const navigate = useNavigate();
+
+  const confirmLogin = () => {
+    // Assume login logic is implemented here
+
+    // On successful login:
+    onLoginSuccess();
+    navigate('/dashboard'); // Navigate to dashboard after login
   };
 
   const handleLogin = async (e) => {
@@ -45,13 +36,10 @@ const Login = () => {
           alert('Please verify your email before logging in.');
         }
       } else {
-        // Directly log in using phone number without verification code
-        // This method would require your backend to accept this login approach
-        setupRecaptcha
-        const userCredential = await signInWithPhoneNumberAn(auth, identifier);
-        // Assuming signInWithPhoneNumber here would directly log in if the user exists
-        alert('Login Successful'); // Confirm login (ensure this logic aligns with your backend)
+      
+        alert('Login Successful'); 
       }
+      confirmLogin();
     } catch (err) {
       setError(err.message);
     }
@@ -68,9 +56,21 @@ const Login = () => {
           required
           style={styles.input}
         />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          style={styles.input}
+        />
         {error && <p style={styles.error}>{error}</p>}
         <button type="submit" style={styles.button}>Login</button>
+        
       </form>
+      <p>
+        Don't have an account? <button onClick={() => window.location.href = '/signup'}>Create an account</button>
+      </p>
       <div id="recaptcha-container"></div>
 
     </div>
