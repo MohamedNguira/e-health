@@ -438,7 +438,7 @@ export default function FullFeaturedCrudGrid() {
       ))}
             </div>
           </form>
-          <button onClick={() => navigate("/pharmacist/tests")} className="px-3.5 py-2.5 bg-[#f1f1f1] rounded justify-center items-center gap-2.5 inline-flex text-center text-[#4f4f4f] text-sm">Next</button>
+          <button onClick={() => navigate("/questionaire")} className="px-3.5 py-2.5 bg-[#f1f1f1] rounded justify-center items-center gap-2.5 inline-flex text-center text-[#4f4f4f] text-sm">Next</button>
         </Box>
         )
         }
