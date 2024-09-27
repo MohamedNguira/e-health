@@ -6,12 +6,12 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 const Navbar = () => {
   return (
-    <div className="w-full bg-white px-4 flex justify-between items-centerpy-3 h-30 border-b-2 border-gray-200">
+    <div className="w-full bg-[#f5f5f5] px-4 flex justify-between items-centerpy-3 h-30 border-b-2 shadow-sm">
       {/* search */}
       <div className="flex items-center gap-8 m-4">
-        <div className='relative flex h-min w-[200px]'>
-          <SearchIcon  className='absolute left-[4px] top-1/2 mr-2 h-5 w-5 -translate-y-1/2 transform cursor-pointer'/>
-          <input  type='search' className='w-full rounded border-none bg-gray-100 p-2 pl-8 placeholder-gray-500 focus:border-transparent focus:outline-none ' placeholder='Search...'/>
+        <div className='relative flex h-min w-[240px]'>
+          <SearchIcon  className='absolute left-[4px] top-1/2 mr-2 h-6 w-6 -translate-y-1/2 transform cursor-pointer pl-1'/>
+          <input  type='search' className='w-full rounded border-none bg-[#ffffff] p-2 pl-8 placeholder-gray-500 focus:border-transparent focus:outline-none ' placeholder='Search...'/>
         </div>
       </div>
       {/* right items */}
