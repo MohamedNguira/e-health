@@ -14,6 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { assets } from "../assets/assets";
 
 
 const Sidebar = () => {
@@ -23,32 +24,31 @@ const Sidebar = () => {
       sx={{
         width: "240px",
         height: "100vh",
-        backgroundColor: "#ffffff",
+        backgroundColor: "#f9f9f9",
         position: "fixed", // Sidebar stays fixed
         top: 0,
         left: 0,
         boxShadow: 1,
         padding: "20px",
+        
       }}
+      className="mb-[25px]"
     >
-      <Typography variant="h3" sx={{ mb: 2, textAlign: "center" }}>
-        My Sidebar
-      </Typography>
+      <img src={assets.logo}  className="mb-5 cursor-pointer" />
       <hr className="border-gray-300 "/>
       <List>
-        <ListItem button className="flex gap-4">
+        <ListItem button className="flex gap-4 cursor-pointer" onClick={()=>navigate("/admin/dashboard")}>
           <DashboardIcon className="h-6 w-6"/>
           <ListItemText primary="Dashboard" />
         </ListItem>
-        <ListItem button className="flex gap-4">
+        <ListItem button className="flex gap-4 cursor-pointer" onClick={()=>navigate("/admin/users")}>
           <PeopleIcon className="h-6 w-6"/>
           <ListItemText primary="Pharmacists" />
         </ListItem>
-        <ListItem button className="flex gap-4" onClick={()=>navigate("/patients")}>
+        <ListItem button className="flex gap-4 cursor-pointer" onClick={()=>navigate("/admin/pending")}>
           <AutorenewIcon className="h-6 w-6"/>
           <ListItemText primary="Pending" />
         </ListItem>
-        
       </List>
     </Box>
   );
