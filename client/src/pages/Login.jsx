@@ -17,7 +17,7 @@ const Login = ({onLoginSuccess}) => {
 
     // On successful login:
     onLoginSuccess();
-    navigate('/dashboard'); // Navigate to dashboard after login
+    navigate('/pharmacist/dashboard'); // Navigate to dashboard after login
   };
 
   const handleLogin = async (e) => {

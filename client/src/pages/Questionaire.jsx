@@ -8,8 +8,10 @@ import Stage4 from './Stage4';
 import Result1 from './result1';
 import Result2 from './result2';
 import Result3 from './result3';
+import { useNavigate } from 'react-router-dom';
 
 const Questionaire = () => {
+  const navigate = useNavigate();
   const [stage,setStage] = useState(1);
   const [score,setScore] = useState(0);
   const finishStage1 = (score) => {
@@ -37,7 +39,7 @@ const Questionaire = () => {
     setStage(7);
   }
   const goBack = () =>{
-
+      navigate(-1);
   }
   return ( <>{stage == 1 && (<Stage1 finish={finishStage1}></Stage1>)}
   {stage == 2 && (<Result1 score ={score} finish={goToStage2}></Result1>)}

@@ -56,7 +56,7 @@ const Details = ({ onNavigateToDashboard }) => {
 
         // Navigate to the dashboard after successful submission
         onNavigateToDashboard();
-        navigate('/dashboard');
+        navigate('/pharmacist/dashboard');
       } catch (error) {
         console.error("Error saving user data:", error);
       }
@@ -72,6 +72,7 @@ const Details = ({ onNavigateToDashboard }) => {
        
           <input
             type="text"
+            name="field1"
             placeholder="Full Name"
             value={userData.field1}
             onChange={handleInputChange}

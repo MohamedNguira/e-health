@@ -174,7 +174,7 @@ const Signup = ({onSignUpSuccess}) => {
 
       {codeSent && (
         <button onClick={verifyCode} >
-          <div style={{width: 350, height: 60, padding: 24, background: '#171645', borderRadius: 4, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex'}}>
+          <div className="mt-3" style={{width: 350, height: 60, padding: 24, background: '#171645', borderRadius: 4, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex'}}>
   <div style={{color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '500', wordWrap: 'break-word'}}>Verify Phone</div>
 </div>
         </button>)}

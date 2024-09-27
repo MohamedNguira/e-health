@@ -26,7 +26,7 @@ function App() {
         <ThemeProvider theme={theme}>
           
             <Routes>
-            <Route path="/" element={<Navigate to="/details" />} />
+            <Route path="/" element={<Navigate to="/signup" />} />
             <Route path="/signup" element={<Signup onSignUpSuccess={handleSignupSuccess} />} />
 
             <Route path="/questionaire" element={<Questionaire />} />
