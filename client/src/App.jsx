@@ -8,6 +8,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Details from './pages/Details'
 import Dashboard from './pages/Dashboard'
+import Questionaire from './pages/Questionaire'
 import { useState } from "react"
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -25,8 +26,10 @@ function App() {
         <ThemeProvider theme={theme}>
           
             <Routes>
-            <Route path="/" element={<Navigate to="/signup" />} />
+            <Route path="/" element={<Navigate to="/details" />} />
             <Route path="/signup" element={<Signup onSignUpSuccess={handleSignupSuccess} />} />
+
+            <Route path="/questionaire" element={<Questionaire />} />
             <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess} />} />
             <Route path="/details" element={<Details onNavigateToDashboard={handleLoginSuccess} />} />
             <Route path="/admin/*" element={isAuthenticated?<AdminDashboard />:<Navigate to="/login" />} />

@@ -64,58 +64,72 @@ const Details = ({ onNavigateToDashboard }) => {
   };
 
   return (
-    <div>
-      <h2>Fill Your Details</h2>
-      <form>
-        <div>
-          <label>Field 1:</label>
+    <div class="w-[100%] h-[100%] relative bg-[#f8f8fb]">
+<div class="p-[72px] top-[70px] absolute left-1/2 transform -translate-x-1/2 bg-white rounded-xl shadow flex-col justify-start items-center gap-8 inline-flex">    <div class="text-[#161545] text-[32px] font-black font-['Merriweather'] text-center">Join as  <br/> a pharmacist</div>
+<div style={styles.container}>
+      
+      <form style={styles.form}>
+       
           <input
             type="text"
-            name="field1"
+            placeholder="Full Name"
             value={userData.field1}
             onChange={handleInputChange}
+            className="pl-4 p-2 border border-gray-300 rounded-md placeholder-opacity-60 placeholder-gray-800 text-lg font-medium w-full max-w-md"
+            style={styles.input}
           />
-        </div>
-        <div>
-          <label>Field 2:</label>
+    
           <input
             type="text"
             name="field2"
+            placeholder="CNOPT Order number"
+
             value={userData.field2}
             onChange={handleInputChange}
+            className="pl-4 p-2 border border-gray-300 rounded-md placeholder-opacity-60 placeholder-gray-800 text-lg font-medium w-full max-w-md"
+            style={styles.input}
           />
-        </div>
-        <div>
-          <label>Field 3:</label>
+       
           <input
-            type="text"
-            name="field3"
-            value={userData.field3}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Field 4:</label>
-          <input
+            placeholder="CNAM identifier"
+
             type="text"
             name="field4"
             value={userData.field4}
             onChange={handleInputChange}
+            className="pl-4 p-2 border border-gray-300 rounded-md placeholder-opacity-60 placeholder-gray-800 text-lg font-medium w-full max-w-md"
+            style={styles.input}
           />
-        </div>
-        <div>
-          <label>Field 5:</label>
+       
           <input
+            placeholder="Pharmacy address"
             type="text"
             name="field5"
             value={userData.field5}
             onChange={handleInputChange}
+            className="pl-4 p-2 border border-gray-300 rounded-md placeholder-opacity-60 placeholder-gray-800 text-lg font-medium w-full max-w-md"
+            style={styles.input}
           />
-        </div>
-        <button type="button" onClick={handleSubmit}>Confirm</button>
+      
+        <button type="button" onClick={handleSubmit}> <div style={{width: 350, height: 60, padding: 24, background: '#171645', borderRadius: 4, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex'}}>
+  <div style={{color: 'white', fontSize: 18, fontFamily: 'Poppins', fontWeight: '500', wordWrap: 'break-word'}}>Create account</div>
+</div></button>
+      
+      
       </form>
+      <div className="m-5 w-[274px] text-center text-[#1e2c4b] text-sm font-normal font-['Mulish']">By joining, you agree to our Terms of Service and Privacy Policy</div>
+
     </div>
+    </div></div>
   );
+};
+const styles = {
+  container: { maxWidth: '700px', margin: 'auto', textAlign: 'center' },
+  form: { display: 'flex', flexDirection: 'column', gap: '10px' },
+  input: {fontFamilty: 'Poppins',width: 350, height: 60, background: '#F8F8FB', borderRadius: 4, border: '1px #DADAF2 solid'},
+  button: { padding: '10px', fontSize: '16px', backgroundColor: 'blue', color: 'white', cursor: 'pointer' },
+  error: { color: 'red' },
+  
 };
 
 export default Details;
