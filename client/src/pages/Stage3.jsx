@@ -3,7 +3,7 @@ import { useSpring, animated } from 'react-spring'; // For sliding transitions
 
 const questions = [
   { question: 'كم مرة تستخدم جهاز الاستنشاق في اليوم؟', options:['أكثر من 5 مرات في الجمعة', '4 او 5 مرات في الجمعة', '3 مرات في الجمعة ', 'مرتین في  الجمعة والا اقل', 'حتى مرة'] },
-  { question: 'أنت تستخدم هذا العدد من أجهزة الاستنشاق في السنة؟', options:['أكثر من 5 مرات في الجمعة', '4 او 5 مرات في الجمعة', '3 مرات في الجمعة ', 'مرتین في  الجمعة والا اقل', 'حتى مرة'] }
+  { question: 'أنت تستخدم هذا العدد من أجهزة الاستنشاق في السنة', options:['أكثر من 5 مرات في الجمعة', '4 او 5 مرات في الجمعة', '3 مرات في الجمعة ', 'مرتین في  الجمعة والا اقل', 'حتى مرة'] }
 ];
 
 const Stage3 = ({finish}) => {
@@ -11,6 +11,7 @@ const Stage3 = ({finish}) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(null)); // Store answers
   const [confirm, setConfirm] = useState(false);
+  const [textareaValue, setTextareaValue] = useState('0');
   const slideAnimation = useSpring({
     transform: `translateX(-${currentQuestion * 100}%)`,
     config: { tension: 280, friction: 60 }
@@ -42,7 +43,7 @@ const Stage3 = ({finish}) => {
   if (confirm) {
     return <div style={styles.centeredText}>شكراً لإكمال الاستبيان!</div>;
   }
-  
+  const result = parseInt(textareaValue, 10) * 365;
   return ( <div className="flex flex-col justify-center items-center h-screen" style={{ backgroundColor: '#F4F9FF', minHeight: '100vh' }}>
     <div className="p-[72px] top-[70px] absolute left-1/2 transform -translate-x-1/2 bg-white rounded-xl shadow flex-col justify-start items-center gap-8 inline-flex w-[900.12px] h-[500.49px] bg-white rounded-[15px]">
       
@@ -73,10 +74,19 @@ const Stage3 = ({finish}) => {
 
         {/* Option Container with Text Field */}
         <div className="relative flex justify-center mt-8">
-          <textarea
+            {index == 0 && (<textarea 
+           value={textareaValue} // Bind the value of the textarea to the state variable
+           onChange={(event) => {
+            setTextareaValue(event.target.value)
+           }}
             className="w-[486px] h-[129px] bg-[#f2f2f2] rounded shadow p-4 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder=""
-          />
+          />)}
+
+{index == 1 && (<div
+            className="w-[486px] h-[129px] bg-[#f2f2f2] rounded shadow p-4 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+     
+          > {result}</div>)}
         </div>
       </div>
     ))}

@@ -2,6 +2,7 @@ import React from 'react';
 
 const Result1 = ({ score, finish }) => {
   let result = 0;
+  score = 30 - score;
   if (score > 10) result = 1;
   if (score > 17) result = 2;
 
