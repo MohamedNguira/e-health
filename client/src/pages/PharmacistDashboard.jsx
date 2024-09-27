@@ -21,6 +21,7 @@ import Patients from "./Patients";
 import Statistics from "./Statistics";
 import Inventory from "./Inventory";
 import Medicine from "./Medicine";
+import Tests from "./Tests";
 const PharmacistDashboard = () => {
     const navigate = useNavigate();
   return (
@@ -123,7 +124,7 @@ const PharmacistDashboard = () => {
           <Route path="stats" element={<Statistics />} />
           <Route path="inventory" element={<Inventory />} />
           <Route path="medicine" element={<Medicine />} />
-          <Route path="tests" element={<></>} />
+          <Route path="tests" element={<Tests />} />
           
         </Routes>
       </Box>
